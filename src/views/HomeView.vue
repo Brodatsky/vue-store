@@ -7,7 +7,7 @@ const productStore = useProductStore()
 <template>
   <div class="flex justify-center flex-col items-center px-5">
     <div class="mb-3 text-2xl">Current Count: {{ productStore.count }}</div>
-    <div class="mb-3 text-2xl">Current data: {{ productStore.data }}</div>
+    <div class="mb-3 text-2xl">Current data: {{ productStore.products }}</div>
     <button
       class="px-4 py-2 border rounded-lg hover:bg-sky-100 w-20"
       @click="productStore.increment"
