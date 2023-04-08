@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import type IProduct from '@/models/product.model'
 
 export const useProductStore = defineStore('ProductStore', {
@@ -16,9 +16,15 @@ export const useProductStore = defineStore('ProductStore', {
     },
 
     async fetchPosts() {
-      const response = await axios.get<IProduct[]>('https://fakestoreapi.com/products?limit=5', {})
-      this.products = response.data
-      console.log(response.data)
+      try {
+        const response = await axios.get<IProduct[]>('https://fakestoreapi.com/products', {
+          params: {limit: 5}
+        })
+        this.products = response.data
+        console.log(response.data)
+      } catch (error) {
+        console.log(error)
+      }
     }
   }
 })
