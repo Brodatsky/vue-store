@@ -17,7 +17,7 @@ export const useProductStore = defineStore('ProductStore', {
 
     async fetchPosts() {
       try {
-        const response = await axios.get<IProduct[]>('https://fakestoreapi.com/products', {
+        const response = await axios.get('https://fakestoreapi.com/products', {
           params: {limit: 5}
         })
         this.products = response.data
