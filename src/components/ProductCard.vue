@@ -8,7 +8,6 @@
       <p>${{ product.price }}</p>
       <div class="justify-end card-actions">
         <ButtonS>Добавить в корзину</ButtonS>
-        <!-- <button class="btn btn-primary" @click="cartStore.add(product.id)">Add to Cart</button> -->
       </div>
     </div>
   </div>

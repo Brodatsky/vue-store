@@ -4,15 +4,15 @@
       <ProductCard v-for="product in productStore.products" :key="product.id" :product="product" />
     </div>
     <div class="mx-auto">
-      <ButtonS @click="productStore.fetchPosts">Load</ButtonS>
+      <ButtonS @click="productStore.fetchProducts">Load</ButtonS>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import ButtonS from '@/components/ButtonS.vue'
-import { useProductStore } from '@/stores/useProductStore'
-import ProductCard from '../components/ProductCard.vue'
+import { useProductStore } from '@/store/useProductStore'
+import ProductCard from '@/components/ProductCard.vue'
 
 const productStore = useProductStore()
 </script>
