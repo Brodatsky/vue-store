@@ -1,25 +1,20 @@
+<template>
+  <div class="p-4 max-w-7xl mx-auto flex flex-col">
+    <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 mb-3">
+      <ProductCard v-for="product in productStore.products" :key="product.id" :product="product" />
+    </div>
+    <div class="mx-auto">
+      <ButtonS @click="productStore.fetchPosts">Load</ButtonS>
+    </div>
+  </div>
+</template>
+
 <script setup lang="ts">
+import ButtonS from '@/components/ButtonS.vue'
 import { useProductStore } from '@/stores/useProductStore'
+import ProductCard from '../components/ProductCard.vue'
 
 const productStore = useProductStore()
 </script>
 
-<template>
-  <div class="flex justify-center flex-col items-center px-5">
-    <div class="mb-3 text-2xl">Current Count: {{ productStore.count }}</div>
-    <div class="mb-3 text-2xl">Current data: {{ productStore.products }}</div>
-    <button
-      class="px-4 py-2 border rounded-lg hover:bg-sky-100 w-20"
-      @click="productStore.increment"
-    >
-      +
-    </button>
-    <button
-      class="px-4 py-2 border rounded-lg hover:bg-sky-100 w-20"
-      @click="productStore.fetchPosts"
-    >
-      Posts
-    </button>
-  </div>
-</template>
 <style scoped></style>
