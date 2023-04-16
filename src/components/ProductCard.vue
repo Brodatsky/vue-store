@@ -7,7 +7,7 @@
       <div class="card-title font-bold">{{ product.title }}</div>
       <p>${{ product.price }}</p>
       <div class="justify-end card-actions">
-        <ButtonS>Добавить в корзину</ButtonS>
+        <BaseButton>Добавить в корзину</BaseButton>
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
 import type { IProduct } from '@/models/product.model'
-import ButtonS from './ButtonS.vue'
+import BaseButton from './BaseButton.vue'
 
 defineProps<{
   product: IProduct
