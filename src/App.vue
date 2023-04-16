@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
   <header>
     <nav className="h-[50px] flex justify-center bg-green-700 items-center text-white mb-3">
@@ -11,5 +7,13 @@ import { RouterLink, RouterView } from 'vue-router'
   </header>
   <main><RouterView /></main>
 </template>
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import { useProductStore } from '@/store/useProductStore'
+
+const productStore = useProductStore()
+
+productStore.fetchProducts()
+</script>
 
 <style scoped></style>

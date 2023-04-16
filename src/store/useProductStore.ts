@@ -2,11 +2,18 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import type { IProduct } from '@/models/product.model'
 
+interface ProductState {
+  count: number
+  products: IProduct[]
+  limit: number
+}
+
 export const useProductStore = defineStore('ProductStore', {
-  state: () => {
+  state: (): ProductState => {
     return {
-      count: 0 as number,
-      products: [] as IProduct[]
+      count: 0,
+      products: [],
+      limit: 20
     }
   },
 
@@ -25,7 +32,7 @@ export const useProductStore = defineStore('ProductStore', {
       if (this.loaded) return
       try {
         const response = await axios.get('https://fakestoreapi.com/products', {
-          params: { limit: 5 }
+          params: { limit: this.limit }
         })
         this.products = response.data
         console.log(response.data)

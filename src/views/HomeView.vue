@@ -4,7 +4,7 @@
       <ProductCard v-for="product in productStore.products" :key="product.id" :product="product" />
     </div>
     <div class="mx-auto">
-      <ButtonS @click="productStore.fetchProducts">Load</ButtonS>
+      <ButtonS @click="productStore.loadMoreProducts">Загрузить ещё</ButtonS>
     </div>
   </div>
 </template>
