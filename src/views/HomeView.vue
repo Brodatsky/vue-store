@@ -7,18 +7,19 @@
       </template>
     </div>
     <div class="btn-container">
-      <ButtonS @click="increment">Добавить</ButtonS>
+      <v-btn @click="increment">Добавить</v-btn>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import ButtonS from '@/components/BaseButton.vue'
 import { useProductStore } from '@/store/useProductStore'
+import { useCartStore } from '@/store/useCartStore'
 import ProductCard from '@/components/ProductCard.vue'
 
 const productStore = useProductStore()
+const cartStore = useCartStore()
 
 const limit = ref(10)
 

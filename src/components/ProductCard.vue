@@ -7,7 +7,7 @@
       <div class="card-title font-bold">{{ product.title }}</div>
       <p>${{ product.price }}</p>
       <div class="justify-end card-actions">
-        <BaseButton>Добавить в корзину</BaseButton>
+        <v-btn @click="cartStore.add(product)"> Add to cart </v-btn>
       </div>
     </div>
   </div>
@@ -15,8 +15,9 @@
 
 <script setup lang="ts">
 import type { IProduct } from '@/models/product.model'
-import BaseButton from './BaseButton.vue'
 
+import { useCartStore } from '@/store/useCartStore'
+const cartStore = useCartStore()
 defineProps<{
   product: IProduct
 }>()
