@@ -1,15 +1,15 @@
 <template>
-  <div class="card border rounded-xl p-3">
-    <div class="card-img mb-3">
+  <div class="card border rounded-xl p-3 flex flex-col justify-between">
+    <div class="card-img mb-5">
       <img :src="product.image" alt="Card Image" class="object-contain w-full h-64" />
     </div>
-    <div class="card-body flex flex-col">
-      <div class="card-title font-bold">{{ product.title }}</div>
-      <p>${{ product.price }}</p>
-      <div class="justify-end card-actions">
-        <v-btn @click="cartStore.add(product)"> Add to cart </v-btn>
-      </div>
-    </div>
+    <!-- <v-btn class="w-full" rounded="xl" @click="cartStore.add(product)"> Add to cart </v-btn> -->
+    <button
+      class="transition ease-in-out duration-300 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 border rounded-full p-1"
+      @click="cartStore.add(product)"
+    >
+      Add to cart
+    </button>
   </div>
 </template>
 
