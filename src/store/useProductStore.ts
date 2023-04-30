@@ -1,12 +1,24 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import type { IProduct } from '@/models/product.model'
 
 interface ProductState {
   isLoading: boolean
   count: number
-  products: IProduct[]
+  products: Product[]
   limit: number
+}
+
+export interface Product {
+  id: number
+  title: string
+  price: number
+  description: string
+  category: string
+  image: string
+  rating: {
+    rate: number
+    count: number
+  }
 }
 
 export const useProductStore = defineStore('ProductStore', {

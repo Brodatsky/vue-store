@@ -3,6 +3,7 @@
     <nav className="h-[50px] flex justify-center bg-gray-500 items-center text-white mb-3">
       <RouterLink class="px-3" to="/"> Home </RouterLink>
       <RouterLink class="px-3" to="/about">About</RouterLink>
+      <RouterLink class="px-3" to="/cart">Cart</RouterLink>
     </nav>
   </header>
   <main><RouterView /></main>

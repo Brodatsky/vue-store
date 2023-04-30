@@ -1,13 +1,13 @@
 import { defineStore } from 'pinia'
-import type { IProduct } from '@/models/product.model'
+import type { Product } from '@/store/useProductStore'
 
-interface Purchase {
-  product: IProduct
+export interface CartProduct {
+  product: Product
   quantity: number
 }
 
 interface CartState {
-  contents: Record<string, Purchase>
+  contents: Record<string, CartProduct>
 }
 
 export const useCartStore = defineStore('CartStore', {
@@ -18,7 +18,7 @@ export const useCartStore = defineStore('CartStore', {
   },
 
   actions: {
-    add(product: IProduct) {
+    add(product: Product) {
       if (this.contents[product.id]) {
         this.contents[product.id].quantity += 1
       } else {
