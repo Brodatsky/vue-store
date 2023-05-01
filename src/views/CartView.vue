@@ -3,7 +3,10 @@
     <template v-for="item in cartStore.contents" :key="item.product.id">
       <CartCard :cartProduct="item" />
     </template>
-    <div>${{ cartStore.total }}</div>
+    <div class="text-center text-lg">
+      <span class="font-bold">Total:</span>
+      ${{ cartStore.total }}
+    </div>
   </div>
 </template>
 
