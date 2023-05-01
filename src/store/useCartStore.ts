@@ -17,6 +17,19 @@ export const useCartStore = defineStore('CartStore', {
     }
   },
 
+  getters: {
+    count(): number {
+      return Object.keys(this.contents).reduce((acc, id) => {
+        return acc + this.contents[id].quantity
+      }, 0)
+    },
+
+    total(): number {
+      return Object.keys(this.contents).reduce((acc, id) => {
+        return acc + this.contents[id].product.price * this.contents[id].quantity
+      }, 0)
+    }
+  },
   actions: {
     add(product: Product) {
       if (this.contents[product.id]) {
@@ -28,15 +41,15 @@ export const useCartStore = defineStore('CartStore', {
         }
       }
     },
-    remove(productID: number) {
-      if (!this.contents[productID]) {
+    remove(product: Product) {
+      if (!this.contents[product.id]) {
         return
       }
 
-      this.contents[productID].quantity -= 1
+      this.contents[product.id].quantity -= 1
 
-      if (this.contents[productID].quantity === 0) {
-        delete this.contents[productID]
+      if (this.contents[product.id].quantity === 0) {
+        delete this.contents[product.id]
       }
     }
   }
