@@ -3,6 +3,16 @@
     <div class="card-img mb-5">
       <img :src="product.image" alt="Card Image" class="object-contain w-full h-64" />
     </div>
+    <star-rating
+      :increment="0.5"
+      :read-only="true"
+      :padding="0"
+      :rating="product.rating.rate"
+      :star-size="15"
+      inactive-color="#64748B"
+      active-color="#FCC347"
+      class="mb-2"
+    />
     <button
       class="transition ease-in-out duration-300 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 border rounded-full p-1"
       @click="cartStore.add(product)"
@@ -22,4 +32,8 @@ defineProps<{
 }>()
 </script>
 
-<style scoped></style>
+<style>
+.vue-star-rating-rating-text {
+  margin-top: 5px;
+}
+</style>
