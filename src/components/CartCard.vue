@@ -5,7 +5,7 @@
     </div>
     <div class="p-8 w-2/3">
       <h2 class="text-xl font-bold mb-3">{{ cartProduct.product.title }}</h2>
-      <p class="text-xl mb-5">${{ cartProduct.product.price }}</p>
+      <p class="text-xl mb-5">{{ toCurrency(cartProduct.product.price) }}</p>
       <div class="">
         <div class="btn-group">
           <button
@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import { useCartStore } from '@/store/useCartStore'
 import type { CartProduct } from '@/store/useCartStore'
+import { toCurrency } from '@/utils/toCurrency'
 const cartStore = useCartStore()
 defineProps<{
   cartProduct: CartProduct

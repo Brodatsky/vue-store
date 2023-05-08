@@ -5,7 +5,7 @@
     </template>
     <div class="text-center text-lg">
       <span class="font-bold">Total:</span>
-      ${{ cartStore.total }}
+      {{ toCurrency(cartStore.total) }}
     </div>
   </div>
 </template>
@@ -14,8 +14,8 @@
 import { useProductStore } from '@/store/useProductStore'
 import { useCartStore } from '@/store/useCartStore'
 import CartCard from '@/components/CartCard.vue'
+import { toCurrency } from '@/utils/toCurrency'
 
-const productStore = useProductStore()
 const cartStore = useCartStore()
 </script>
 
