@@ -1,10 +1,18 @@
 <template>
   <div class="flex flex-col md:flex-row w-full mx-auto border rounded-xl p-3 mb-2">
     <div class="p-8 w-1/3 flex items-center mx-auto">
-      <img :src="cartProduct.product.image" alt="Card Image" class="object-contain w-32 mx-auto" />
+      <router-link :to="`/product/${cartProduct.product.id}`">
+        <img
+          :src="cartProduct.product.image"
+          alt="Card Image"
+          class="object-contain w-32 mx-auto"
+        />
+      </router-link>
     </div>
     <div class="p-8 w-2/3">
-      <h2 class="text-xl font-bold mb-3">{{ cartProduct.product.title }}</h2>
+      <router-link :to="`/product/${cartProduct.product.id}`">
+        <h2 class="text-xl font-bold mb-3">{{ cartProduct.product.title }}</h2>
+      </router-link>
       <p class="text-xl mb-5">{{ toCurrency(cartProduct.product.price) }}</p>
       <div class="">
         <div class="btn-group">

@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import { CART_STORE } from '@/utils/usePersistCart'
+
 import type { Product } from '@/store/useProductStore'
 
 export interface CartProduct {
@@ -13,7 +15,7 @@ interface CartState {
 export const useCartStore = defineStore('CartStore', {
   state: (): CartState => {
     return {
-      contents: {}
+      contents: JSON.parse(localStorage.getItem(CART_STORE) as string) ?? {}
     }
   },
 

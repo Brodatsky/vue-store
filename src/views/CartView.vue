@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from '@/store/useProductStore'
 import { useCartStore } from '@/store/useCartStore'
 import CartCard from '@/components/CartCard.vue'
 import { toCurrency } from '@/utils/toCurrency'
