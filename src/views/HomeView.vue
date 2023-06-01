@@ -11,19 +11,21 @@
     >
       New Product
     </button>
-    <ModalWindow v-model:show="modalVisability">123</ModalWindow>
+    <ModalWindow v-model:show="modalVisability"></ModalWindow>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import { useProductStore } from '@/store/useProductStore'
 import ProductCard from '@/components/ProductCard.vue'
 import ModalWindow from '@/components/ModalWindow.vue'
 
 const productStore = useProductStore()
 
-let modalVisability = ref(false)
+let modalVisability: Ref<boolean> = ref(false)
+
 function showModal() {
   modalVisability.value = true
 }
