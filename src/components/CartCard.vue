@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col md:flex-row w-full mx-auto border rounded-xl p-3 mb-2">
-    <div class="p-8 w-1/3 flex items-center mx-auto">
+    <div class="p-3 w-1/3">
       <router-link :to="`/product/${cartProduct.product.id}`">
         <img
           :src="cartProduct.product.image"

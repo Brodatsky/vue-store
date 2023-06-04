@@ -33,7 +33,6 @@ import { RouterLink, RouterView } from 'vue-router'
 import { useCartStore } from '@/store/useCartStore'
 import { useProductStore } from '@/store/useProductStore'
 import { usePersistCart } from '@/utils/usePersistCart'
-// import { CART_STORE } from '@/utils/usePersistCart'
 
 const productStore = useProductStore()
 const cartStore = useCartStore()
@@ -41,8 +40,6 @@ const cartStore = useCartStore()
 productStore.fetchProducts()
 
 usePersistCart()
-
-// console.log(JSON.parse(localStorage.getItem(CART_STORE) as string))
 </script>
 
 <style scoped></style>

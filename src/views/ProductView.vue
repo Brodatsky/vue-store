@@ -11,7 +11,7 @@
           :increment="0.5"
           :read-only="true"
           :padding="0"
-          :rating="product.rating.rate"
+          :rating="product.rating?.rate"
           :star-size="15"
           inactive-color="#64748B"
           active-color="#FCC347"
