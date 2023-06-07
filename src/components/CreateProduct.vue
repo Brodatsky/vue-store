@@ -7,7 +7,7 @@
       <Field name="title" class="input mb-5" />
       <ErrorMessage name="title" class="block mb-5" />
       <label for="price">Price</label>
-      <Field name="price" type="number" modelValue="10" class="input mb-5" />
+      <Field name="price" type="number" class="input mb-5" />
       <ErrorMessage name="price" class="block mb-5" />
       <label for="description">Description</label>
       <Field name="description" class="input mb-5" />
@@ -36,13 +36,13 @@ import * as yup from 'yup'
 const productStore = useProductStore()
 
 const schema = yup.object({
-  title: yup.string().required(),
-  price: yup.number().required(),
-  description: yup.string().required(),
-  category: yup.string().required()
+  title: yup.string().required('Title is required'),
+  price: yup.number().required('Price is required'),
+  description: yup.string().required('Description is required'),
+  category: yup.string().required('Category is required')
 })
 
-async function onSubmit(product: any, actions: any) {
+async function onSubmit(product: any) {
   product.image = `https://placehold.co/400x600?text=${product.title}`
 
   try {
