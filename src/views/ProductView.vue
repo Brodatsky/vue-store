@@ -19,22 +19,21 @@
         />
 
         <p class="text-2xl mb-3">{{ toCurrency(product.price) }}</p>
-        <button
-          class="mt-auto transition ease-in-out duration-300 bg-gray-100 hover:bg-gray-200 active:bg-gray-300 border w-full rounded-full p-1"
-          @click.stop="cartStore.add(product)"
-        >
+        <ButtonStd class="mt-auto w-full" @click.stop="cartStore.add(product)">
           Add to cart
-        </button>
+        </ButtonStd>
       </div>
     </div>
   </template>
 </template>
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useProductStore, type Product } from '@/store/useProductStore'
 import { useCartStore } from '@/store/useCartStore'
 import { toCurrency } from '@/utils/toCurrency'
-import { computed } from 'vue'
+
+import ButtonStd from '@/components/UI/ButtonStd.vue'
 
 const productStore = useProductStore()
 const cartStore = useCartStore()

@@ -16,21 +16,21 @@
       <p class="text-xl mb-5">{{ toCurrency(cartProduct.product.price) }}</p>
       <div class="">
         <div class="btn-group">
-          <button
-            class="transition ease-in-out duration-300 hover:bg-yellow-400 active:bg-yellow-500 rounded-l-md px-3 py-2 bg-yellow-300"
+          <ButtonCart
+            class="rounded-l-md hover:bg-yellow-400 active:bg-yellow-500 px-3 py-2 bg-yellow-300"
             @click="cartStore.remove(cartProduct.product)"
           >
             -
-          </button>
-          <button class="transition ease-in-out duration-300 hover:bg-gray-100 px-3 py-2">
+          </ButtonCart>
+          <ButtonCart class="hover:bg-gray-100 px-3 py-2">
             {{ cartProduct.quantity }}
-          </button>
-          <button
-            class="transition ease-in-out duration-300 hover:bg-yellow-400 active:bg-yellow-500 rounded-r-md px-3 py-2 bg-yellow-300"
+          </ButtonCart>
+          <ButtonCart
+            class="rounded-r-md hover:bg-yellow-400 active:bg-yellow-500 px-3 py-2 bg-yellow-300"
             @click="cartStore.add(cartProduct.product)"
           >
             +
-          </button>
+          </ButtonCart>
         </div>
       </div>
     </div>
@@ -38,6 +38,8 @@
 </template>
 
 <script setup lang="ts">
+import ButtonCart from '@/components/UI/ButtonCart.vue'
+
 import { useCartStore } from '@/store/useCartStore'
 import type { CartProduct } from '@/store/useCartStore'
 import { toCurrency } from '@/utils/toCurrency'

@@ -18,7 +18,7 @@
           to="/cart"
           >Cart
           <div
-            class="transition w-10 font-bold inline-block hover:bg-yellow-500 bg-yellow-400 rounded-full text-black px-2 py-0.5"
+            class="transition w-10 font-bold inline-block hover:bg-yellow-500 bg-yellow-400 rounded-full text-black px-2 py-0.5 ml-2"
           >
             <p class="font-medium text-center">{{ cartStore.count }}</p>
           </div>
