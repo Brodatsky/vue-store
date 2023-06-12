@@ -1,11 +1,15 @@
 <template>
   <div class="p-4 max-w-7xl mx-auto flex flex-col items-center">
-    <div class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-5">
+    <div
+      v-if="!productStore.isLoading"
+      class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-5"
+    >
       <template v-for="product in productStore.products" :key="product.id">
         <ProductCard v-if="product.id" :product="product" />
       </template>
     </div>
-    <ButtonStd @click="showModal = true"> New Product </ButtonStd>
+    <div v-else class="mb-3"><p>Loading...</p></div>
+    <ButtonStd @click="showModal = true" v-if="!productStore.isLoading"> New Product </ButtonStd>
     <ModalWindow :show="showModal" @close="showModal = false"
       ><CreateProduct></CreateProduct
     ></ModalWindow>

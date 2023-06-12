@@ -44,9 +44,10 @@ export const useProductStore = defineStore('ProductStore', {
           params: { limit: this.limit }
         })
         this.products = response.data
-        this.isLoading = false
       } catch (error) {
         console.log(error)
+      } finally {
+        this.isLoading = false
       }
     },
     addProduct(product: Product) {
