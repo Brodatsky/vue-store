@@ -1,10 +1,20 @@
 <template>
   <div class="p-4 max-w-7xl mx-auto flex flex-col items-center">
+    <div class="filter mb-3">
+      <select v-model="productStore.selectedFilter" class="border-2">
+        <option disabled value="">Please select one</option>
+        <option>All</option>
+        <option>men's clothing</option>
+        <option>women's clothing</option>
+        <option>jewelery</option>
+        <option>electronics</option>
+      </select>
+    </div>
     <div
       v-if="!productStore.isLoading"
       class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-5"
     >
-      <template v-for="product in productStore.products" :key="product.id">
+      <template v-for="product in productStore.filteredProducts" :key="product.id">
         <ProductCard v-if="product.id" :product="product" />
       </template>
     </div>
@@ -21,6 +31,7 @@ import { ref } from 'vue'
 import type { Ref } from 'vue'
 
 import { useProductStore } from '@/store/useProductStore'
+
 import ProductCard from '@/components/ProductCard.vue'
 import ModalWindow from '@/components/ModalWindow.vue'
 import ButtonStd from '@/components/UI/ButtonStd.vue'

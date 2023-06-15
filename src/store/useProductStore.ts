@@ -3,8 +3,8 @@ import axios from 'axios'
 
 interface ProductState {
   isLoading: boolean
+  selectedFilter: string
   products: Product[]
-  limit: number
 }
 
 export interface Product {
@@ -24,25 +24,28 @@ export const useProductStore = defineStore('ProductStore', {
   state: (): ProductState => {
     return {
       isLoading: false,
-      products: [],
-      limit: 20
+      selectedFilter: 'All',
+      products: []
     }
   },
 
   getters: {
-    loaded(state): boolean {
-      return state.products.length > 0
+    filteredProducts(state) {
+      if (state.selectedFilter == 'All') {
+        console.log(123)
+
+        return state.products
+      } else
+        return state.products.filter((product) => {
+          return product.category == state.selectedFilter
+        })
     }
   },
-
   actions: {
     async fetchProducts() {
-      if (this.loaded) return
       try {
         this.isLoading = true
-        const response = await axios.get('https://fakestoreapi.com/products', {
-          params: { limit: this.limit }
-        })
+        const response = await axios.get('https://fakestoreapi.com/products')
         this.products = response.data
       } catch (error) {
         console.log(error)
