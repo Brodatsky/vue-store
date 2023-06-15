@@ -4,7 +4,9 @@ import axios from 'axios'
 interface ProductState {
   isLoading: boolean
   selectedFilter: string
+  searchQuery: string
   products: Product[]
+  filteredProducts: Product[]
 }
 
 export interface Product {
@@ -25,20 +27,25 @@ export const useProductStore = defineStore('ProductStore', {
     return {
       isLoading: false,
       selectedFilter: 'All',
-      products: []
+      searchQuery: '',
+      products: [],
+      filteredProducts: []
     }
   },
 
   getters: {
-    filteredProducts(state) {
+    filterProducts(state): void {
       if (state.selectedFilter == 'All') {
-        console.log(123)
-
-        return state.products
+        state.filteredProducts = state.products
       } else
-        return state.products.filter((product) => {
+        state.filteredProducts = state.products.filter((product) => {
           return product.category == state.selectedFilter
         })
+    },
+    searchProducts(state): void {
+      state.filteredProducts = state.products.filter((product) => {
+        return product.title.toLowerCase().includes(state.searchQuery.toLowerCase())
+      })
     }
   },
   actions: {
