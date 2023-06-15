@@ -1,7 +1,7 @@
 <template>
   <div class="p-4 max-w-7xl mx-auto flex flex-col items-center">
     <div class="filter mb-3 flex flex-col">
-      <input v-model.lazy="productStore.searchQuery" class="border-2 mb-2" />
+      <input v-model="productStore.searchQuery" class="border-2 mb-2" />
       <select v-model="productStore.selectedFilter" class="border-2">
         <option disabled value="">Please select one</option>
         <option>All</option>
