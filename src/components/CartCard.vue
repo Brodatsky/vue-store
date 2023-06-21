@@ -17,7 +17,7 @@
       <div class="">
         <div class="btn-group">
           <ButtonCart
-            class="rounded-l-md hover:bg-yellow-400 active:bg-yellow-500 px-3 py-2 bg-yellow-300"
+            class="rounded-l-md bg-yellow-300 hover:bg-yellow-400 active:bg-yellow-500 px-3 py-2"
             @click="cartStore.remove(cartProduct.product)"
           >
             -
@@ -26,7 +26,7 @@
             {{ cartProduct.quantity }}
           </ButtonCart>
           <ButtonCart
-            class="rounded-r-md hover:bg-yellow-400 active:bg-yellow-500 px-3 py-2 bg-yellow-300"
+            class="rounded-r-md bg-yellow-300 hover:bg-yellow-400 active:bg-yellow-500 px-3 py-2"
             @click="cartStore.add(cartProduct.product)"
           >
             +

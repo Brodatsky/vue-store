@@ -1,6 +1,8 @@
 <template>
   <header>
-    <nav className="h-[50px]  flex bg-slate-500 items-center text-white mb-2 overflow-hidden">
+    <nav
+      className="flex items-center justify-between h-[50px] bg-slate-500 text-white mb-2 overflow-hidden"
+    >
       <div active-class="bg-slate-600" class="mx-10">
         <RouterLink class="transition text-lg font-bold hover:text-gray-200 px-2 py-4" to="/"
           >MyStore</RouterLink
@@ -18,11 +20,22 @@
           to="/cart"
           >Cart
           <div
-            class="transition w-10 font-bold inline-block hover:bg-yellow-500 bg-yellow-400 rounded-full text-black px-2 py-0.5 ml-2"
+            class="transition w-10 font-bold inline-block bg-yellow-300 hover:bg-yellow-400 active:bg-yellow-500 rounded-full text-black px-2 py-0.5 ml-2"
           >
             <p class="font-medium text-center">{{ cartStore.count }}</p>
           </div>
         </RouterLink>
+      </div>
+      <div>
+        <input
+          v-model.lazy="productStore.searchQuery"
+          class="rounded-l focus:outline-none h-[30px] px-1 text-black"
+        />
+        <button
+          class="btn rounded-r transition ease-in-out duration-300 px-3 bg-yellow-300 hover:bg-yellow-400 active:bg-yellow-500 h-[30px] w-[70px] mr-3"
+        >
+          <p class="font-bold text-black"><v-icon name="io-search" scale="1.2" /></p>
+        </button>
       </div>
     </nav>
   </header>
