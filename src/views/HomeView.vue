@@ -1,15 +1,6 @@
 <template>
   <div class="p-4 max-w-7xl mx-auto flex flex-col items-center">
-    <div class="filter mb-3 flex flex-col">
-      <select v-model="productStore.selectedFilter" class="border-2">
-        <option disabled value="">Please select one</option>
-        <option>All</option>
-        <option>men's clothing</option>
-        <option>women's clothing</option>
-        <option>jewelery</option>
-        <option>electronics</option>
-      </select>
-    </div>
+    <FilterProducts></FilterProducts>
     <div
       v-if="!productStore.isLoading"
       class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-5"
@@ -35,7 +26,7 @@ import { useProductStore } from '@/store/useProductStore'
 import ProductCard from '@/components/ProductCard.vue'
 import ModalWindow from '@/components/ModalWindow.vue'
 import ButtonStd from '@/components/UI/ButtonStd.vue'
-
+import FilterProducts from '@/components/FilterProducts.vue'
 import CreateProduct from '@/components/CreateProduct.vue'
 
 const productStore = useProductStore()
