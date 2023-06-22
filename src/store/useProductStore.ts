@@ -3,7 +3,8 @@ import axios from 'axios'
 
 interface ProductState {
   isLoading: boolean
-  selectedFilter: string
+  categoryFilter: string
+  sortFilter: string
   searchQuery: string
   products: Product[]
   filteredProducts: Product[]
@@ -26,7 +27,8 @@ export const useProductStore = defineStore('ProductStore', {
   state: (): ProductState => {
     return {
       isLoading: false,
-      selectedFilter: 'All',
+      categoryFilter: 'All',
+      sortFilter: 'Featured',
       searchQuery: '',
       products: [],
       filteredProducts: []
@@ -35,13 +37,21 @@ export const useProductStore = defineStore('ProductStore', {
 
   getters: {
     filterProducts(state): void {
-      if (state.selectedFilter == 'All') {
+      if (state.categoryFilter == 'All') {
         state.filteredProducts = state.products
       } else
         state.filteredProducts = state.products.filter((product) => {
-          return product.category == state.selectedFilter
+          return product.category == state.categoryFilter
         })
     },
+    // filterProducts(state): void {
+    //   if (state.categoryFilter == 'All') {
+    //     state.filteredProducts = state.products
+    //   } else
+    //     state.filteredProducts = state.products.filter((product) => {
+    //       return product.category == state.categoryFilter
+    //     })
+    // },
     searchProducts(state): void {
       state.filteredProducts = state.products.filter((product) => {
         return product.title.toLowerCase().includes(state.searchQuery.toLowerCase())
