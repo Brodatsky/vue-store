@@ -5,7 +5,7 @@
       v-if="!productStore.isLoading"
       class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-5"
     >
-      <template v-for="product in productStore.filteredProducts" :key="product.id">
+      <template v-for="product in productStore.filtredAndSearchAndSortProducts" :key="product.id">
         <ProductCard v-if="product.id" :product="product" />
       </template>
     </div>
@@ -31,6 +31,23 @@ import CreateProduct from '@/components/CreateProduct.vue'
 
 const productStore = useProductStore()
 
+// const filteredProducts = computed(() => {
+//   return productStore.categoryFilter === 'All'
+//     ? productStore.products
+//     : productStore.products.filter((product) => {
+//         return product.category == productStore.categoryFilter
+//       })
+// })
+
+// sortProducts(state): void {
+//   if (state.sortFilter == 'Featured') {
+//     state.filteredProducts.sort((prev, next) => {
+//       return next.rating.rate - prev.rating.rate
+//     })
+//     this.isLoading = false
+//     console.log(123)
+//   }
+// }
 let showModal: Ref<boolean> = ref(false)
 </script>
 
