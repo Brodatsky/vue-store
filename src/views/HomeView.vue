@@ -1,6 +1,10 @@
 <template>
   <div class="p-4 max-w-7xl mx-auto flex flex-col items-center">
-    <FilterProducts></FilterProducts>
+    <div class="menu flex">
+      <FilterProducts></FilterProducts>
+      <ButtonStd @click="showModal = true" v-if="!productStore.isLoading"> New Product </ButtonStd>
+    </div>
+
     <div
       v-if="!productStore.isLoading"
       class="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mb-5"
@@ -10,28 +14,26 @@
       </template>
     </div>
     <div v-else class="mb-3"><p>Loading...</p></div>
-    <ButtonStd @click="showModal = true" v-if="!productStore.isLoading"> New Product </ButtonStd>
     <ModalWindow :show="showModal" @close="showModal = false"
-      ><CreateProduct></CreateProduct
-    ></ModalWindow>
+      ><CreateProduct></CreateProduct>
+    </ModalWindow>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { Ref } from 'vue'
 
 import { useProductStore } from '@/store/useProductStore'
 
-import ProductCard from '@/components/ProductCard.vue'
 import ModalWindow from '@/components/ModalWindow.vue'
-import ButtonStd from '@/components/UI/ButtonStd.vue'
-import FilterProducts from '@/components/FilterProducts.vue'
 import CreateProduct from '@/components/CreateProduct.vue'
+import ButtonStd from '@/components/UI/ButtonStd.vue'
+import ProductCard from '@/components/ProductCard.vue'
+import FilterProducts from '@/components/FilterProducts.vue'
 
 const productStore = useProductStore()
 
-let showModal: Ref<boolean> = ref(false)
+let showModal = ref<boolean>(false)
 </script>
 
 <style scoped></style>
