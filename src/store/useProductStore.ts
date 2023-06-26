@@ -7,17 +7,16 @@ interface ProductState {
   sortFilter: string
   searchQuery: string
   products: Product[]
-  filteredProducts: Product[]
 }
 
 export interface Product {
-  id?: number
+  id: number
   title: string
   price: number
   description: string
   category: string
   image: string
-  rating?: {
+  rating: {
     rate: number
     count: number
   }
@@ -30,32 +29,55 @@ export const useProductStore = defineStore('ProductStore', {
       categoryFilter: 'All',
       sortFilter: 'Featured',
       searchQuery: '',
-      products: [],
-      filteredProducts: []
+      products: []
     }
   },
 
   getters: {
-    filterProducts(state): void {
-      if (state.categoryFilter == 'All') {
-        state.filteredProducts = state.products
-      } else
-        state.filteredProducts = state.products.filter((product) => {
-          return product.category == state.categoryFilter
-        })
+    filteredProducts(state): Product[] {
+      return state.categoryFilter == 'All'
+        ? state.products
+        : state.products.filter((product) => {
+            return product.category == state.categoryFilter
+          })
     },
-    // filterProducts(state): void {
-    //   if (state.categoryFilter == 'All') {
-    //     state.filteredProducts = state.products
-    //   } else
-    //     state.filteredProducts = state.products.filter((product) => {
-    //       return product.category == state.categoryFilter
-    //     })
-    // },
-    searchProducts(state): void {
-      state.filteredProducts = state.products.filter((product) => {
+
+    filtredAndSearchProducts(state): Product[] {
+      return this.filteredProducts.filter((product) => {
         return product.title.toLowerCase().includes(state.searchQuery.toLowerCase())
       })
+    },
+
+    filtredAndSearchAndSortProducts(state): Product[] {
+      switch (state.sortFilter) {
+        case 'Featured':
+          return this.filtredAndSearchProducts.sort((prev, next) => {
+            return next.rating.rate - prev.rating.rate
+          })
+          break
+
+        case 'Price: High-Low':
+          return this.filtredAndSearchProducts.sort((prev, next) => {
+            return next.price - prev.price
+          })
+          break
+
+        case 'Price: Low-High':
+          return this.filtredAndSearchProducts.sort((prev, next) => {
+            return prev.price - next.price
+          })
+          break
+        default:
+          return this.filtredAndSearchProducts
+          break
+      }
+      if (state.sortFilter == 'Featured') {
+        return this.filtredAndSearchProducts.sort((prev, next) => {
+          return next.rating.rate - prev.rating.rate
+        })
+      } else {
+        return this.filtredAndSearchProducts
+      }
     }
   },
   actions: {
