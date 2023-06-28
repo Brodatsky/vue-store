@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://Brodatsky.github.io/vue-store/",
   "scripts": {
-    "build": "vite build",
+    "build": "run-p type-check build-only",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "dev": "vite",
