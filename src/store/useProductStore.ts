@@ -71,13 +71,6 @@ export const useProductStore = defineStore('ProductStore', {
           return this.filtredAndSearchProducts
           break
       }
-      if (state.sortFilter == 'Featured') {
-        return this.filtredAndSearchProducts.sort((prev, next) => {
-          return next.rating.rate - prev.rating.rate
-        })
-      } else {
-        return this.filtredAndSearchProducts
-      }
     }
   },
   actions: {

@@ -1,9 +1,9 @@
 <template>
   <div class="p-4 max-w-7xl mx-auto flex flex-col items-center">
-    <div class="btn mb-5">
-      <ButtonStd @click="showModal = true" v-if="!productStore.isLoading"
+    <div class="btn">
+      <!-- <ButtonStd @click="showModal = true" v-if="!productStore.isLoading"
         >Add new Product
-      </ButtonStd>
+      </ButtonStd> -->
     </div>
 
     <div class="menu flex mb-2">
