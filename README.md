@@ -1,14 +1,22 @@
+Demo: https://brodatsky.github.io/vue-store/
+
 # vue-store
 Shopping cart example using Vue 3, Vite, Pinia, tailwindcss
 
-Demo: https://brodatsky.github.io/vue-store/
+## Project Setup
 
-Usage
-## Install dependencies
-$ npm install
+```sh
+npm install
+```
 
-## Compiles and hot-reloads for development
-$ npm run dev
+### Compile and Hot-Reload for Development
 
-## Compiles and minifies for production
-$ npm run build
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
