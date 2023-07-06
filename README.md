@@ -1,7 +1,7 @@
 # vue-store
 Shopping cart example using Vue 3, Vite, Pinia, tailwindcss
 
-Demo: brodatsky.github.io/vue-store/
+Demo: https://brodatsky.github.io/vue-store/
 
 Usage
 ## Install dependencies
